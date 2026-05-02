@@ -12,7 +12,7 @@ export async function findEmail(opts: {
   firstName: string;
   lastName: string;
 }): Promise<HunterResult> {
-  if (!env.HUNTER_API_KEY) throw new Error("HUNTER_API_KEY missing");
+  if (!env.HUNTER_API_KEY) throw new Error("Missing HUNTER_API_KEY: This feature requires Hunter.io for email enrichment. Please configure it in Vercel.");
   const params = new URLSearchParams({
     domain: opts.domain,
     first_name: opts.firstName,

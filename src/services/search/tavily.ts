@@ -5,7 +5,7 @@ const ENDPOINT = "https://api.tavily.com/search";
 
 export const tavily: SearchProvider = {
   async search(query, { limit = 15, tbm = null } = {}) {
-    if (!env.TAVILY_API_KEY) throw new Error("TAVILY_API_KEY missing");
+    if (!env.TAVILY_API_KEY) throw new Error("Missing TAVILY_API_KEY: This feature requires Tavily for web search. Please configure it in Vercel.");
     const res = await fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

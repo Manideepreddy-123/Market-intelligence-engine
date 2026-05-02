@@ -4,7 +4,7 @@ import { env } from "@/lib/env";
 
 let _client: Groq | null = null;
 function client(): Groq {
-  if (!env.GROQ_API_KEY) throw new Error("GROQ_API_KEY missing");
+  if (!env.GROQ_API_KEY) throw new Error("Missing GROQ_API_KEY: This feature requires Groq for LLM generation. Please configure it in Vercel.");
   if (!_client) _client = new Groq({ apiKey: env.GROQ_API_KEY });
   return _client;
 }

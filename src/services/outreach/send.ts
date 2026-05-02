@@ -44,8 +44,9 @@ export async function sendOutreach(outreachId: string) {
   if (!to || outreach.contact.emailStatus === "unavailable") {
     throw new Error(`Contact has no usable email`);
   }
-  if (!env.BREVO_API_KEY) throw new Error("BREVO_API_KEY missing");
-  if (!env.FROM_EMAIL) throw new Error("FROM_EMAIL missing");
+  if (!env.BREVO_API_KEY || !env.FROM_EMAIL) {
+    throw new Error("Missing BREVO_API_KEY or FROM_EMAIL: This feature requires Brevo to send emails. Please configure them in Vercel.");
+  }
 
   const mid = sign(outreach.id);
   const html = buildHtml(outreach.body, mid);

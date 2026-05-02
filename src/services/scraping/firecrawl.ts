@@ -3,7 +3,7 @@ import { env } from "@/lib/env";
 const ENDPOINT = "https://api.firecrawl.dev/v1/scrape";
 
 export async function firecrawlScrape(url: string): Promise<string | null> {
-  if (!env.FIRECRAWL_API_KEY) throw new Error("FIRECRAWL_API_KEY missing");
+  if (!env.FIRECRAWL_API_KEY) throw new Error("Missing FIRECRAWL_API_KEY: This feature requires Firecrawl for deep scraping. Please configure it in Vercel.");
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 30_000);
   try {
